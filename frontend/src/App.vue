@@ -108,7 +108,10 @@ async function handleParse() {
     parseMessage.value = data.from_cache ? "解析完成（缓存命中）" : "解析完成";
   } catch (error: any) {
     parseMessageType.value = "error";
-    parseMessage.value = error?.response?.data?.error || "解析失败，请检查后端日志";
+    parseMessage.value =
+      error?.response?.data?.detail ||
+      error?.response?.data?.error ||
+      "解析失败，请检查后端日志";
   } finally {
     parsing.value = false;
   }
@@ -125,7 +128,10 @@ async function handleMatch() {
     matchMessage.value = data.from_cache ? "匹配完成（缓存命中）" : "匹配完成";
   } catch (error: any) {
     matchMessageType.value = "error";
-    matchMessage.value = error?.response?.data?.error || "匹配失败，请检查输入或后端日志";
+    matchMessage.value =
+      error?.response?.data?.detail ||
+      error?.response?.data?.error ||
+      "匹配失败，请检查输入或后端日志";
   } finally {
     matching.value = false;
   }
