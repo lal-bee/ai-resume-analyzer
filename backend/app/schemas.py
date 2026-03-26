@@ -26,7 +26,7 @@ class ParseResponse(BaseModel):
 
 class MatchRequest(BaseModel):
     resume_id: str = Field(min_length=1, max_length=128)
-    job_description: str = Field(min_length=10, max_length=20000)
+    job_description: str = Field(min_length=1, max_length=20000)
 
 
 class MatchResponse(BaseModel):
