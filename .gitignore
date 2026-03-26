@@ -1,0 +1,37 @@
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Backend cache/runtime
+backend/.cache/
+backend/.serverless/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Environment
+.env
+backend/.env
+frontend/.env
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/

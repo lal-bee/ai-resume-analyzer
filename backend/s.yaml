@@ -1,0 +1,38 @@
+edition: 3.0.0
+name: ai-resume-analyzer
+
+access: default
+
+vars:
+  region: cn-hangzhou
+  service:
+    name: ai-resume-analyzer-svc
+    description: AI Resume Analyzer FastAPI backend
+
+resources:
+  ai-resume-analyzer:
+    component: fc3
+    props:
+      region: ${vars.region}
+      service: ${vars.service}
+      function:
+        name: backend-http
+        description: FastAPI service for resume analysis
+        runtime: custom-container
+        caPort: 8000
+        timeout: 60
+        memorySize: 1024
+        instanceConcurrency: 10
+        customContainerConfig:
+          image: registry.cn-hangzhou.aliyuncs.com/your-namespace/ai-resume-analyzer:latest
+          command:
+            - uvicorn
+            - app.main:app
+            - --host
+            - 0.0.0.0
+            - --port
+            - "8000"
+        environmentVariables:
+          APP_ENV: prod
+          APP_NAME: AI Resume Analyzer
+          CORS_ORIGINS: "*"
